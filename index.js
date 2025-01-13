@@ -34,3 +34,12 @@ app.put("/update", (req, res) =>{});
 app.listen(3000, () => {
     console.log('Server is running on port '+port);
   });
+// About page
+app.get('/about', (req, res) => {
+  res.render('about.ejs');
+});
+
+// Contact page
+app.get('/contact', (req, res) => {
+  res.render('contact.ejs');
+});
