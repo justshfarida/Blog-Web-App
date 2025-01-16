@@ -12,17 +12,30 @@
 </head>
 <body>
     <%-include("./partials/navbar.ejs")%>
+    <section class="hero">
+      <div class="hero-content">
+        <h1 class="hero-title">Welcome to Farida's Blog</h1>
+        <p class="hero-subtitle">Discover insights, share ideas, and get inspired every day.</p>
+        <div class="hero-buttons">
+          <a href="/about" class="btn btn-primary">Learn More</a>
+          <a href="/contact" class="btn btn-secondary">Contact Us</a>
+        </div>
+      </div>
+    </section>
     <h1 class="blog-title">Blog Posts</h1>
     <ul class="blog-list">
-        <% blogs.forEach(blog => { %>
-          <li class="blog-item">
-            <h2><%= blog.title %></h2>
-            <img src="<%= blog.image %>" alt="<%= blog.title %>" class="blog-image">
-            <p><%= blog.content.substring(0, 100) %>...</p>
-            <a href="/blogs/<%= blog.id %>" class="read-more">Read More</a>
-          </li>
-        <% }) %>
-      </ul>
+      <% blogs.forEach(blog => { %>
+        <li class="blog-item">
+          <h2><%= blog.title %></h2>
+          <img src="<%= blog.image %>" alt="<%= blog.title %>" class="blog-image">
+          <p><%= blog.content.substring(0, 100) %>...</p>
+          <a href="/blogs/<%= blog.id %>" class="read-more">Read More</a>
+          <a href="/update/<%= blog.id %>" class="edit-button">Edit</a> <!-- Link to the update page -->
+          <a href="/delete/<%= blog.id %>" class="delete-button">Delete</a>
+        </li>
+      <% }) %>
+  </ul>
+  
       <div id="create-link"><a id="create-anchor" href="/form">Create New Blog</a></div>
       <div class="b-example-divider"></div>
 

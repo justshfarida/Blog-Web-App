@@ -1,0 +1,14 @@
+.footer
+{
+  display:flex;
+  justify-content: center;
+  margin-right: 0px !important;
+  margin-left: 0px !important;
+  background-image: linear-gradient(to right, #4c669f 0%, #6ec1e4 100%);
+
+}
+@media (min-width:576px) {
+  .footer {
+  min-width:100%;
+  }
+}

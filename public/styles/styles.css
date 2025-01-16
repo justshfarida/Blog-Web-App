@@ -231,3 +231,67 @@ body {
 .contact-form button:hover {
   background-color: #6ec1e4;
 }
+/* Hero Section */
+.hero {
+  position: relative;
+  width: 100%;
+  height: 70vh;
+  
+  background-image: linear-gradient(to right, #4c669f 0%, #6ec1e4 100%),
+
+                    url('https://via.placeholder.com/1920x1080'); /* Replace with your hero image URL */
+  background-size: cover;
+  background-position: center;
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 20px;
+}
+
+.hero-content {
+  max-width: 800px;
+}
+
+.hero-title {
+  font-family: "Kaushan Script", cursive;
+  font-size: 3.5rem;
+  margin-bottom: 10px;
+}
+
+.hero-subtitle {
+  font-size: 1.5rem;
+  margin-bottom: 20px;
+  line-height: 1.5;
+}
+
+.hero-buttons .btn {
+  padding: 10px 20px;
+  font-size: 1.2rem;
+  border-radius: 5px;
+  margin: 0 10px;
+  text-decoration: none;
+  display: inline-block;
+}
+
+.hero-buttons .btn-primary {
+  background-color: #4c669f;
+  color: white;
+  transition: background-color 0.3s ease-in-out;
+}
+
+.hero-buttons .btn-primary:hover {
+  background-color: #6ec1e4;
+}
+
+.hero-buttons .btn-secondary {
+  background-color: #6ec1e4;
+  color: white;
+  transition: background-color 0.3s ease-in-out;
+}
+
+.hero-buttons .btn-secondary:hover {
+  background-color: #4c669f;
+}
+  

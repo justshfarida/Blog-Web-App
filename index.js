@@ -24,13 +24,47 @@ app.get("/blogs/:id", (req, res) => {
 app.get("/form",(req, res) =>
     res.render("create.ejs"));
 
+// Create a new blog
 app.post("/create", (req, res) => {
     const { title, content, image } = req.body;
-    blogs.push({ id: blogs.length + 1, title, content, image });
+    blogs.push({ id: Date.now(), title, content, image });
     res.redirect("/");
-  });  
-app.delete("/delete", (req, res) =>{});
-app.put("/update", (req, res) =>{});
+});
+
+// Delete a blog by ID
+app.get("/delete/:id", (req, res) => {
+    const id = parseInt(req.params.id);
+    blogs = blogs.filter(blog => blog.id !== id);
+    res.status(200).send({ message: "Blog deleted successfully" });
+});
+app.get("/update/:id", (req, res) => {
+  const id = parseInt(req.params.id);
+  const blog = blogs.find(blog => blog.id === id);
+
+  if (!blog) {
+      return res.status(404).send("Blog not found");
+  }
+
+  res.render("update.ejs", { blog });
+});
+
+app.put("/update/:id", (req, res) => {
+  const id = parseInt(req.params.id); // Extract the ID from the URL
+  const { title, content, image } = req.body; // Extract updated fields from the request body
+
+  const blog = blogs.find(blog => blog.id === id);
+
+  if (!blog) {
+      return res.status(404).send({ message: "Blog not found" });
+  }
+
+  // Update the blog properties
+  if (title) blog.title = title;
+  if (content) blog.content = content;
+  if (image) blog.image = image;
+
+  res.status(200).send({ message: "Blog updated successfully", blog });
+});
 app.listen(3000, () => {
     console.log('Server is running on port '+port);
   });
