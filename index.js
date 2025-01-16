@@ -1,6 +1,6 @@
 import express from 'express';
 import bodyParser from 'body-parser';
-
+import methodOverride from 'method-override';
 const app = express();
 const port=3000;
 
@@ -8,6 +8,8 @@ let blogs = [];
 
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(express.static("public"));
+app.use(methodOverride("_method"));
+
 app.set("view engine", "ejs");
 
 app.get("/", (req, res) =>
@@ -35,7 +37,7 @@ app.post("/create", (req, res) => {
 app.get("/delete/:id", (req, res) => {
     const id = parseInt(req.params.id);
     blogs = blogs.filter(blog => blog.id !== id);
-    res.status(200).send({ message: "Blog deleted successfully" });
+    res.redirect("/");
 });
 app.get("/update/:id", (req, res) => {
   const id = parseInt(req.params.id);
@@ -63,7 +65,7 @@ app.put("/update/:id", (req, res) => {
   if (content) blog.content = content;
   if (image) blog.image = image;
 
-  res.status(200).send({ message: "Blog updated successfully", blog });
+  res.redirect("/");
 });
 app.listen(3000, () => {
     console.log('Server is running on port '+port);
